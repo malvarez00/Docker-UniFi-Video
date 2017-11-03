@@ -1,13 +1,15 @@
 # Unifi-Video
-FROM ubuntu:16.04
+
+FROM phusion/baseimage
 
 LABEL maintainer="malvarez00@icloud.com"
 
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update && \
+	apt-get -y dist-upgrade && \
 	apt-get -y install \
-		wget &&\ 
+		wget && \ 
 	apt-get clean
 
 # Download the UniFi Video Package
@@ -20,12 +22,14 @@ RUN apt-get install -y \
 	lsb-release \
 	mongodb-server \
 	openjdk-8-jre-headless \
-	jsvc sudo
-RUN dpkg -i unifi-video.Ubuntu16.04_amd64.v3.8.3.deb
-RUN apt-get -f -y install
+	jsvc \
+	sudo
+RUN sudo dpkg -i unifi-video.Ubuntu16.04_amd64.v3.8.3.deb
+RUN apt-get -f -y install && \
+	apt-get -y autoremove
 
 # The installation will continue
-RUN dpkg -i unifi-video.Ubuntu16.04_amd64.v3.8.3.deb
+RUN sudo dpkg -i unifi-video.Ubuntu16.04_amd64.v3.8.3.deb
 
 # Remove UniFi Video Package
 RUN rm -rf unifi-video.Ubuntu16.04_amd64.v3.8.3.deb
@@ -36,6 +40,8 @@ VOLUME /var/lib/unifi-video
 VOLUME /usr/lib/unifi-video
 # Log Path
 VOLUME /var/log/unifi-video
+
+WORKDIR /var/lib/unifi-video
 
 # Port - Type (TCP/UDP) - Purpose
 # 22 - TCP - SSH (NVR Side)
@@ -50,4 +56,4 @@ VOLUME /var/log/unifi-video
 
 EXPOSE 22 6666 7004 7080 7442 7443 7445 7446 7447
 
-CMD "service unifi-video --full-restart"
+CMD ["/usr/sbin/unifi-video", "-D", "start"]
