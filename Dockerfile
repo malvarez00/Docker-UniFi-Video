@@ -36,8 +36,7 @@ RUN rm -rf unifi-video.Ubuntu16.04_amd64.v3.8.3.deb
 
 # Data Path 
 VOLUME /var/lib/unifi-video
-# Code Path
-# VOLUME /usr/lib/unifi-video
+
 # Log Path
 VOLUME /var/log/unifi-video
 
