@@ -1,5 +1,6 @@
 # Docker-UniFi-Video
 
+```
 docker run \
   --name UniFi-Video \
   -p 6666:6666 \
@@ -16,5 +17,17 @@ docker run \
   --cap-add=SETUID \
   --cap-add=SYS_ADMIN \
   --cap-add=SYS_PTRACE \
-  --privileged
+  --privileged \
   unifi-video
+```
+
+## Port - Type (TCP/UDP) - Purpose
+* 7022 - TCP - SSH (NVR Side)
+* 6666 - TCP - Inbound Camera Streams (NVR Side)
+* 7004 - UDP - UVC-Micro Talkback (Camera Side)
+* 7080 - TCP - HTTP Web UI & API (NVR Side
+* 7442 - TCP - Camera Management (NVR Side)
+* 7443 - TCP - HTTPS Web UI & API (NVR Side)
+* 7445 - TCP - Video over HTTP
+* 7446 - TCP - Video over HTTPS
+* 7447 - TCP - RTSP via the controller
