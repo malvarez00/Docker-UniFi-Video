@@ -25,7 +25,7 @@ docker run \
 * 7022 - TCP - SSH (NVR Side)
 * 6666 - TCP - Inbound Camera Streams (NVR Side)
 * 7004 - UDP - UVC-Micro Talkback (Camera Side)
-* 7080 - TCP - HTTP Web UI & API (NVR Side
+* 7080 - TCP - HTTP Web UI & API (NVR Side)
 * 7442 - TCP - Camera Management (NVR Side)
 * 7443 - TCP - HTTPS Web UI & API (NVR Side)
 * 7445 - TCP - Video over HTTP
