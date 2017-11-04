@@ -9,7 +9,7 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update && \
 	apt-get -y dist-upgrade && \
 	apt-get -y install \
-		wget && \ 
+		wget && \
 	apt-get clean
 
 # Download the UniFi Video Package
@@ -34,7 +34,7 @@ RUN sudo dpkg -i unifi-video.Ubuntu16.04_amd64.v3.8.5.deb
 # Remove UniFi Video Package
 RUN rm -rf unifi-video.Ubuntu16.04_amd64.v3.8.5.deb
 
-# Data Path 
+# Data Path
 VOLUME /var/lib/unifi-video
 
 # Log Path
@@ -43,7 +43,7 @@ VOLUME /var/log/unifi-video
 WORKDIR /var/lib/unifi-video
 
 # Port - Type (TCP/UDP) - Purpose
-# 22 - TCP - SSH (NVR Side)
+# 7022 - TCP - SSH (NVR Side)
 # 6666 - TCP - Inbound Camera Streams (NVR Side)
 # 7004 - UDP - UVC-Micro Talkback (Camera Side)
 # 7080 - TCP - HTTP Web UI & API (NVR Side)
