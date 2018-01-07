@@ -13,7 +13,7 @@ RUN apt-get update && \
 	apt-get clean
 
 # Download the UniFi Video Package
-RUN wget https://dl.ubnt.com/firmwares/ufv/v3.8.5/unifi-video.Ubuntu16.04_amd64.v3.8.5.deb
+RUN wget https://dl.ubnt.com/firmwares/ufv/v3.9.0/unifi-video.Ubuntu16.04_amd64.v3.9.0.deb
 
 # Install UniFi Videoo and all the dependencies
 RUN apt-get install -y \
