@@ -24,15 +24,15 @@ RUN apt-get install -y \
 	openjdk-8-jre-headless \
 	jsvc \
 	sudo
-RUN sudo dpkg -i unifi-video.Ubuntu16.04_amd64.v3.8.5.deb
+RUN sudo dpkg -i unifi-video.Ubuntu16.04_amd64.v3.9.0.deb
 RUN apt-get -f -y install && \
 	apt-get -y autoremove
 
 # The installation will continue
-RUN sudo dpkg -i unifi-video.Ubuntu16.04_amd64.v3.8.5.deb
+RUN sudo dpkg -i unifi-video.Ubuntu16.04_amd64.v3.9.0.deb
 
 # Remove UniFi Video Package
-RUN rm -rf unifi-video.Ubuntu16.04_amd64.v3.8.5.deb
+RUN rm -rf unifi-video.Ubuntu16.04_amd64.v3.9.0.deb
 
 # Data Path
 VOLUME /var/lib/unifi-video
