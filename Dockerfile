@@ -22,7 +22,7 @@ RUN \
 		lsb-release \
 		binutils \
 		jsvc \
-		mongodb-org-server \
+		mongodb-server \
 		openjdk-8-jre-headless \
 		sudo \
 		wget && \
