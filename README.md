@@ -1,4 +1,4 @@
-# Docker-UniFi-Video
+## Docker-UniFi-Video
 
 ```
 docker run \
@@ -21,7 +21,7 @@ docker run \
   unifi-video
 ```
 
-## Port - Type (TCP/UDP) - Purpose
+# Port - Type (TCP/UDP) - Purpose
 * 7022 - TCP - SSH (NVR Side)
 * 6666 - TCP - Inbound Camera Streams (NVR Side)
 * 7004 - UDP - UVC-Micro Talkback (Camera Side)
