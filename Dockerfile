@@ -4,35 +4,37 @@ FROM phusion/baseimage
 
 LABEL maintainer="malvarez00@icloud.com"
 
+# Environment Settings
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN apt-get update && \
+RUN \
+	echo "---Import the public key used by the package management system---" && \	
+	apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2930ADAE8CAF5059EE73BB4B58712A2291FA4AD5 && \
+	echo "---Create a list file for MongoDB---" && \
+	echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.6 multiverse" | \
+		tee /etc/apt/sources.list.d/mongodb-org-3.6.list && \
+	echo "---Reload local package database---" && \
+	apt-get update && \
 	apt-get -y dist-upgrade && \
 	apt-get -y install \
+		apt-utils \
+		psmisc \
+		lsb-release \
+		binutils \
+		jsvc \
+		mongodb-org-server \
+		openjdk-8-jre-headless \
+		sudo \
 		wget && \
-	apt-get clean
-
-# Download the UniFi Video Package
-RUN wget https://dl.ubnt.com/firmwares/ufv/v3.9.0/unifi-video.Ubuntu16.04_amd64.v3.9.0.deb
-
-# Install UniFi Videoo and all the dependencies
-RUN apt-get install -y \
-	apt-utils \
-	psmisc \
-	lsb-release \
-	mongodb-server \
-	openjdk-8-jre-headless \
-	jsvc \
-	sudo
-RUN sudo dpkg -i unifi-video.Ubuntu16.04_amd64.v3.9.0.deb
-RUN apt-get -f -y install && \
+	echo "---Install Unifi-Video---" && \
+	curl -o \
+		unifi-video.deb -L \
+			"https://dl.ubnt.com/firmwares/ufv/v3.9.0/unifi-video.Ubuntu16.04_amd64.v3.9.0.deb" && \
+	dpkg -i unifi-video.deb && \
+	echo "---Cleanup---" && \ 		
+	apt-get clean && \
+	rm -rf unifi-video.deb && \
 	apt-get -y autoremove
-
-# The installation will continue
-RUN sudo dpkg -i unifi-video.Ubuntu16.04_amd64.v3.9.0.deb
-
-# Remove UniFi Video Package
-RUN rm -rf unifi-video.Ubuntu16.04_amd64.v3.9.0.deb
 
 # Data Path
 VOLUME /var/lib/unifi-video
