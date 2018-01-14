@@ -31,6 +31,7 @@ RUN \
 		unifi-video.deb -L \
 			"https://dl.ubnt.com/firmwares/ufv/v3.9.0/unifi-video.Ubuntu16.04_amd64.v3.9.0.deb" && \
 	dpkg -i unifi-video.deb && \
+	apt-get -f install && \
 	echo "---Cleanup---" && \ 		
 	apt-get clean && \
 	rm -rf unifi-video.deb && \
