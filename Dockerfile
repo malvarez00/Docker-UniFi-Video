@@ -29,7 +29,7 @@ RUN \
 	echo "---Install Unifi-Video---" && \
 	curl -o \
 		unifi-video.deb -L \
-			"https://dl.ubnt.com/firmwares/ufv/v3.9.7/unifi-video.Ubuntu16.04_amd64.v3.9.7.deb" && \
+			"https://dl.ubnt.com/firmwares/ufv/v3.9.8/unifi-video.Ubuntu16.04_amd64.v3.9.8.deb" && \
 	dpkg -i unifi-video.deb && \
 	apt-get -f install && \
 	echo "---Cleanup---" && \ 		
