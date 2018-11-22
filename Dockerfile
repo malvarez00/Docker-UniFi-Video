@@ -35,7 +35,8 @@ RUN \
 	echo "---Cleanup---" && \ 		
 	apt-get clean && \
 	rm -rf unifi-video.deb && \
-	apt-get -y autoremove
+	apt-get --quiet autoremove --yes && \
+	apt-get --quiet --yes clean
 
 # Data Path
 VOLUME /var/lib/unifi-video
